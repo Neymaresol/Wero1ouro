@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: wero1-operario
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: WERO_MODE
+        value: production
+      - key: DB_PATH
+        value: /app/data/wero1.db
+      - key: HOTMART_HOTTOK
+        sync: false
+      - key: WERO_ADMIN_TOKEN
+        sync: false
+      - key: HOTMART_ACCESS_TOKEN
+        sync: false
+    disk:
+      name: wero1-data
+      mountPath: /app/data
+      sizeGB: 1
